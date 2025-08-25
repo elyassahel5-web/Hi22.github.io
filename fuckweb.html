@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuck a Stranger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(40px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #e00;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+
+        button {
+            padding: 18px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: transparent;
+            color: #fff;
+            border: 3px solid #ff0000;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            letter-spacing: 1px;
+            outline: none;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.8), transparent);
+            transition: 0.5s;
+        }
+
+        button:hover {
+            background: rgba(255, 0, 0, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #imageContainer {
+            margin-top: 30px;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        #imageContainer img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 3px solid #ff0000;
+            transition: all 0.5s ease;
+        }
+
+        #imageContainer img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #ccc;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+
+    <div class="container">
+        <h1>Click Below</h1>
+        <button id="actionButton">fuck a stranger</button>
+        <div id="imageContainer">
+            <img src="https://i.postimg.cc/KjfN6PG6/Full-Size-Render-11.jpg" alt="Surprise Image">
+        </div>
+        <p class="footer">© 2025 | Just for fun.</p>
+    </div>
+
+    <!-- Audio element for whoosh sound -->
+    <audio id="whooshSound" src="https://freesound.org/data/previews/449/449194_1216264-lq.mp3" preload="auto"></audio>
+
+    <script>
+        const button = document.getElementById('actionButton');
+        const imageContainer = document.getElementById('imageContainer');
+        const whooshSound = document.getElementById('whooshSound');
+
+        button.addEventListener('click', function() {
+            // Play whoosh sound
+            whooshSound.currentTime = 0; // Reset if already played
+            whooshSound.play().catch(e => console.log("Audio play blocked by browser"));
+
+            // Toggle image
+            if (imageContainer.style.display === 'block') {
+                imageContainer.style.display = 'none';
+            } else {
+                imageContainer.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
